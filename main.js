@@ -1,9 +1,10 @@
 import './style.less'
+//
+import './src/components/slider/slider.js'
+
 document.querySelector('#app').innerHTML = `
   <div id="container" class="">
-    <div id="prev" class="roway out-line">
-      
-    </div>
+    <swn-slider pos="left"></swn-slider>
     <div id="main" class="out-line">
       
       <div id="tools" class="out-line">
@@ -23,9 +24,7 @@ document.querySelector('#app').innerHTML = `
         
       </div>
     </div>
-    <div id="next" class="roway out-line">
-      
-    </div>
+    <swn-slider pos="right"></swn-slider>
   </div>
 `
 
