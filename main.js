@@ -4,7 +4,7 @@ import './src/components/slider/slider.js'
 
 document.querySelector('#app').innerHTML = `
   <div id="container" class="">
-    <swn-slider pos="left"></swn-slider>
+    <swn-slider direct="left" width="50px" motion="30px"></swn-slider>
     <div id="main" class="out-line">
       
       <div id="tools" class="out-line">
@@ -24,7 +24,6 @@ document.querySelector('#app').innerHTML = `
         
       </div>
     </div>
-    <swn-slider pos="right"></swn-slider>
+    <swn-slider direct="right" width="50px" motion="30px"></swn-slider>
   </div>
 `
-
