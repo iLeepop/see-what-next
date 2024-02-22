@@ -1,7 +1,12 @@
+import { v1 } from 'uuid'
+
 class App extends HTMLElement {
+  static cname = 'swn-app'
+  swnId
   constructor() {
     super()
     this.attachShadow({ mode: 'open' })
+    this.swnId = v1() // 生成标识
   }
   connectedCallback() {
     this.render()
@@ -17,7 +22,7 @@ class App extends HTMLElement {
     this.shadowRoot.innerHTML = `
     <link rel="stylesheet" href="./style.less">
     <div id="container" class="">
-      <swn-slider direct="left" width="50px" motion="30px"></swn-slider>
+      <swn-slider ref="LeftSlider" direct="left" width="50px" motion="30px"></swn-slider>
       <div id="main" class="out-line">
         
         <div id="tools" class="out-line">
@@ -37,10 +42,10 @@ class App extends HTMLElement {
           
         </div>
       </div>
-      <swn-slider direct="right" width="50px" motion="30px"></swn-slider>
+      <swn-slider ref="RightSlider" direct="right" width="50px" motion="30px"></swn-slider>
     </div>
   `
   }
 }
 
-customElements.define('swn-app', App)
+customElements.define(App.cname, App)

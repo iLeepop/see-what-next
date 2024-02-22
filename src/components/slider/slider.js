@@ -1,4 +1,10 @@
+import { v1 } from 'uuid'
+import { RegistryElement } from "../../../core/element/registryElement"
+
 class SWNSlider extends HTMLElement {
+  static cname = 'swn-slider'
+  swnId
+  ref
   direct = 'left'
   width = '50px'
   motion = '30px'
@@ -6,6 +12,11 @@ class SWNSlider extends HTMLElement {
   constructor() {
     super()
     this.attachShadow({ mode: 'open' })
+    this.swnId = v1()
+    if (this.getAttribute('ref')) {
+      this.ref = this.getAttribute('ref')
+      RegistryElement.registry(SWNSlider.cname, this.ref)
+    }
   }
 
   connectedCallback() {
@@ -39,7 +50,6 @@ class SWNSlider extends HTMLElement {
   render() { // 不确定这么写对不对 避免数据修改过快导致短时间渲染多次
     clearTimeout(this.renderTime)
     this.renderTime = setTimeout(() => {
-      console.log('ready render')
       this.shadowRoot.innerHTML = `
     <style>
     .swn-slider {
@@ -65,7 +75,7 @@ class SWNSlider extends HTMLElement {
   }
 }
 
-customElements.define('swn-slider', SWNSlider)
+customElements.define(SWNSlider.cname, SWNSlider)
 
 export default SWNSlider
 
