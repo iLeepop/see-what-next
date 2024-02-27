@@ -1,31 +1,15 @@
-import { v1 } from 'uuid'
-import { RegistryElement } from "../../../core/element/registryElement"
+import { SWNElement } from '../../../core/element/class/SWNElement'
 
-class SWNSlider extends HTMLElement {
+class SWNSlider extends SWNElement {
   static cname = 'swn-slider'
-  swnId
-  ref
   direct = 'left'
   width = '50px'
   motion = '30px'
-  renderTime
   constructor() {
     super()
-    this.attachShadow({ mode: 'open' })
-    this.swnId = v1()
-    if (this.getAttribute('ref')) {
-      this.ref = this.getAttribute('ref')
-      RegistryElement.registry(SWNSlider.cname, this.ref)
-    }
   }
 
-  connectedCallback() {
-    this.render()
-  }
 
-  disconnectedCallback() {
-    console.log('disconnected')
-  }
 
   static get observedAttributes() {
     return ['direct', 'width', 'motion']

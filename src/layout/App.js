@@ -1,17 +1,12 @@
-import { v1 } from 'uuid'
+import { SWNElement } from '../../core/element/class/SWNElement'
+import '../components/slider/slider.js'
+import '../components/card/card.js'
 
-class App extends HTMLElement {
+class App extends SWNElement {
   static cname = 'swn-app'
-  swnId
   constructor() {
     super()
-    this.attachShadow({ mode: 'open' })
-    this.swnId = v1() // 生成标识
   }
-  connectedCallback() {
-    this.render()
-  }
-  disconnectedCallback() { }
   static get observedAttributes() {
     return []
   }
@@ -24,7 +19,6 @@ class App extends HTMLElement {
     <div id="container" class="">
       <swn-slider ref="LeftSlider" direct="left" width="50px" motion="30px"></swn-slider>
       <div id="main" class="out-line">
-        
         <div id="tools" class="out-line">
           <ul id="tools-list">
             <li class="out-line">
@@ -38,9 +32,7 @@ class App extends HTMLElement {
             </li>
           </ul>
         </div>
-        <div id="card" class="out-line">
-          
-        </div>
+        <swn-card width="90vw" height="90vh"></swn-card>
       </div>
       <swn-slider ref="RightSlider" direct="right" width="50px" motion="30px"></swn-slider>
     </div>
@@ -49,3 +41,5 @@ class App extends HTMLElement {
 }
 
 customElements.define(App.cname, App)
+
+export default App
