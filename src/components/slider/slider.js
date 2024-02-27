@@ -5,11 +5,18 @@ class SWNSlider extends SWNElement {
   direct = 'left'
   width = '50px'
   motion = '30px'
+  num = 50
   constructor() {
     super()
   }
 
-
+  connectedCallback() {
+    this.addEventListener('click', () => {
+      // 切换主页信息
+      this.width = `${this.num += 50}px`
+      this.render()
+    })
+  }
 
   static get observedAttributes() {
     return ['direct', 'width', 'motion']

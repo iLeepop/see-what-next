@@ -38,7 +38,9 @@ class SWNCard extends SWNElement {
         border: 1px solid #000;
       }
     </style>
-    <div id="card" class="out-line"></div>
+    <div id="card" class="out-line">
+      <slot name="title"></slot>
+    </div>
     `
     }, 500)
   }
