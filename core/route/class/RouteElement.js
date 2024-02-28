@@ -1,8 +1,8 @@
 import { v1 } from 'uuid'
 //
-import { RegistryElement } from '../registryElement.js'
-
-export class SWNElement extends HTMLElement {
+// import { RegistryRoute } from './HistoryRoute.js'
+// 路由元素 麻烦 没写
+export class RouteElement extends HTMLElement {
   static cname = 'swn-element'
   swnId
   ref
@@ -12,12 +12,6 @@ export class SWNElement extends HTMLElement {
     this.attachShadow({ mode: 'open' })
     this.swnId = v1()
     this.setAttribute('swnId', this.swnId)
-    // 注册组件信息 暂时舍弃
-    // 0228:又捡回来了
-    if (this.getAttribute('ref')) {
-      this.ref = this.getAttribute('ref')
-      RegistryElement.registry(this, this.ref)
-    }
   }
   connectedCallback() {
     this.render()

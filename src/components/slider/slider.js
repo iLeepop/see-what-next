@@ -1,20 +1,21 @@
 import { SWNElement } from '../../../core/element/class/SWNElement'
+import { RegistryElement } from '../../../core/element/registryElement.js'
 
 class SWNSlider extends SWNElement {
   static cname = 'swn-slider'
   direct = 'left'
   width = '50px'
   motion = '30px'
-  num = 50
   constructor() {
     super()
   }
 
   connectedCallback() {
+    console.log(`${this.direct} Slider connect`)
     this.addEventListener('click', () => {
       // 切换主页信息
-      this.width = `${this.num += 50}px`
-      this.render()
+      const MainCard = RegistryElement.ref('MainCard')
+      MainCard.render()
     })
   }
 

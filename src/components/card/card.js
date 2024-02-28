@@ -1,4 +1,5 @@
 import { SWNElement } from '../../../core/element/class/SWNElement'
+// import { RegistryElement } from '../../../core/element/registryElement.js'
 
 class SWNCard extends SWNElement {
   static cname = 'swn-card'
@@ -6,6 +7,14 @@ class SWNCard extends SWNElement {
   height = '100px'
   constructor() {
     super()
+  }
+
+  connectedCallback() {
+    console.log(`card-${this.swnId} connect`)
+  }
+
+  disconnectedCallback() {
+    console.log(`card disconnect`)
   }
 
   static get observedAttributes() {
@@ -40,6 +49,7 @@ class SWNCard extends SWNElement {
     </style>
     <div id="card" class="out-line">
       <slot name="title"></slot>
+      ${`<p>Hello World!</p>`}
     </div>
     `
     }, 500)
