@@ -1,7 +1,7 @@
 export class HistoryRouters {
   constructor(routes) {
     this.routes = routes
-    this._bindPopState()
+    this._bind()
   }
   init(path) {
     history.replaceState({ path: path }, null, path)
@@ -14,7 +14,7 @@ export class HistoryRouters {
     history.pushState({ path: path }, null, path)
     this.routes[path] && this.routes[path]()
   }
-  _bindPopState() {
+  _bind() {
     // 直接修改 url 时，根据路由规则初始化
     document.addEventListener('DOMContentLoaded', (e) => {
       this.init(e.target.location.pathname)

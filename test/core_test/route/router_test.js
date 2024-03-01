@@ -18,16 +18,17 @@ const Route = {
 }
 
 const TRoute = {
-  '/': () => {
+  '/'() {
     app.innerHTML = '<p>Home Page</p>'
   },
-  '/about': () => {
-    app.innerHTML = '<p>About Page</p>'
+  '/about'() {
+    app.innerHTML = '<p>About Page<outlet></outlet></p>'
   },
-  '/about/auth': () => {
-    app.innerHTML = '<p>About Auth Page</p>'
+  '/about/auth'() {
+    this['/about']()
+    document.querySelector('outlet').innerHTML = '<p>Auth Page</p>'
   },
-  '/error': () => {
+  '/error'() {
     app.innerHTML = '<p>404 Page</p>'
   }
 }

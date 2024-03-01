@@ -2,7 +2,7 @@ const router = [
   {
     path: '/',
     name: 'home',
-    component: '<p></p>',
+    component: '<p><outlet></outlet></p>',
     children: [
       {
         path: '/1',
@@ -17,3 +17,15 @@ const router = [
     ]
   }
 ]
+
+const _router = {
+  '/'() {
+    document.querySelector('#app').innerHTML = '<p><outlet></outlet></p>'
+  },
+  '/1'() {
+    this['/']()
+  },
+  '/2'() {
+    this['/']()
+  }
+}
