@@ -1,6 +1,10 @@
+import { BuildRouter } from '../util/BuildRouter.js'
+import SWN from '../../mount/SWN.js'
+
 export class HistoryRouters {
-  constructor(routes) {
-    this.routes = routes
+  // 不对 不应该传 root 应该只传 routes
+  constructor(routes, root) {
+    this.routes = BuildRouter(routes, root)
     this._bind()
   }
   init(path) {
@@ -15,6 +19,8 @@ export class HistoryRouters {
     this.routes[path] && this.routes[path]()
   }
   _bind() {
+    // 提升到全局变量中
+    SWN.$Router = this
     // 直接修改 url 时，根据路由规则初始化
     document.addEventListener('DOMContentLoaded', (e) => {
       this.init(e.target.location.pathname)

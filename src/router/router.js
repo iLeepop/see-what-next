@@ -1,31 +1,28 @@
-const router = [
-  {
-    path: '/',
+import App from '../layout/App.js'
+import About from '../pages/About/About.js'
+import Other from '../pages/Other/Other.js'
+
+export const route = {
+  '/': {
     name: 'home',
-    component: '<p><outlet></outlet></p>',
+    component: App,
     children: [
       {
-        path: '/1',
-        name: '1',
-        component: '<p>1</p>'
+        '/other': {
+          name: 'other',
+          component: Other
+        },
       },
       {
-        path: '/2',
-        name: '2',
-        component: '<p>2</p>'
+        '/about': {
+          name: 'about',
+          component: About
+        }
       }
     ]
-  }
-]
-
-const _router = {
-  '/'() {
-    document.querySelector('#app').innerHTML = '<p><outlet></outlet></p>'
   },
-  '/1'() {
-    this['/']()
-  },
-  '/2'() {
-    this['/']()
+  '/error': {
+    name: 'error',
+    element: '<p>404 Page</p>'
   }
 }

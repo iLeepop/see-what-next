@@ -6,8 +6,8 @@ export class RegistryElement {
   constructor() {
   }
   static registry(el, ref) {
-    this.registrys.set(ref, el)
-    console.log(`${ref} registry success`)
+    // 避免重复注册
+    if (!this.registrys.has(ref)) this.registrys.set(ref, el)
     clearTimeout(this.registryTime)
     // 不太对 我将注册方法放到组件的构造函数里面了 所以导致构造函数会延迟 200ms 不是我期望的
     // 应该有更好的解决方法在所有事情处理完成后执行

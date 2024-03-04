@@ -39,6 +39,11 @@ class SWNCard extends SWNElement {
     this.renderTime = setTimeout(() => {
       this.shadowRoot.innerHTML = `
       <style>
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
       #card {
         width: ${this.width};
         height: ${this.height};
@@ -48,8 +53,7 @@ class SWNCard extends SWNElement {
       }
     </style>
     <div id="card" class="out-line">
-      <slot name="title"></slot>
-      ${`<p>Hello World!</p>`}
+      <slot name="outlet"></slot>
     </div>
     `
     }, 500)

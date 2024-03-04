@@ -1,0 +1,44 @@
+#container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+#container #main {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+#container #main #tools {
+  position: absolute;
+  right: 5%;
+  top: 5%;
+  width: max-content;
+  z-index: 1001;
+}
+
+#container #main #tools #tools-list {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  padding: 5px;
+}
+
+#container #main #tools #tools-list li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+#container #main #card {
+  position: absolute;
+  width: 90%;
+  height: 90%;
+}

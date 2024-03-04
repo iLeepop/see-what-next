@@ -1,5 +1,6 @@
 import { SWNElement } from '../../../core/element/class/SWNElement'
 import { RegistryElement } from '../../../core/element/registryElement.js'
+import SWN from '../../../core/mount/SWN.js'
 
 class SWNSlider extends SWNElement {
   static cname = 'swn-slider'
@@ -14,8 +15,9 @@ class SWNSlider extends SWNElement {
     console.log(`${this.direct} Slider connect`)
     this.addEventListener('click', () => {
       // 切换主页信息
-      const MainCard = RegistryElement.ref('MainCard')
-      MainCard.render()
+      // const MainCard = RegistryElement.ref('MainCard')
+      // MainCard.render()
+      this.direct === 'left' ? SWN.$Router.go('/other') : SWN.$Router.go('/about')
     })
   }
 
@@ -44,6 +46,11 @@ class SWNSlider extends SWNElement {
     this.renderTime = setTimeout(() => {
       this.shadowRoot.innerHTML = `
     <style>
+      * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
     .swn-slider {
       position: fixed;
       ${this.direct}: -${this.motion};

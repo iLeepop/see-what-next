@@ -1,14 +1,11 @@
 import './style.less'
 //
 import './src/layout/App.js'
-import { RegistryElement } from './core/element/registryElement.js'
-import { StorageTree } from './core/element/storageTree.js'
+import { HistoryRouters } from './core/route/class/HistoryRoute.js'
+import { route } from './src/router/router.js'
 
 const App = document.querySelector('#app')
-App.innerHTML = `<swn-app></swn-app>` // 挂载
-// const children = App.children
-// for (let i = 0; i < children.length; i++) {
-//   if (children[i].tagName.match(/^swn-/i)) console.log('oh!')
-// }
-
-// StorageTree.treeset(App)
+// App.innerHTML = `<swn-app></swn-app>` // 挂载
+// const swn_app = document.createElement('swn-app')
+// App.appendChild(swn_app)
+const historyRouters = new HistoryRouters(route, App)

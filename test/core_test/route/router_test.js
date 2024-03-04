@@ -9,65 +9,71 @@ const Route = {
   },
   '/about': {
     name: 'about',
-    component: '<p>About Page</p>'
+    component: '<p>About Page<outlet></outlet></p>',
+    children: [
+      {
+        path: '/about/auth',
+        name: 'auth',
+        component: '<p>Auth Page</p>'
+      }
+    ]
   },
-  'error': {
+  '/error': {
     name: 'error',
     component: '<p>404 Page</p>'
   }
 }
 
-const TRoute = {
-  '/'() {
-    app.innerHTML = '<p>Home Page</p>'
-  },
-  '/about'() {
-    app.innerHTML = '<p>About Page<outlet></outlet></p>'
-  },
-  '/about/auth'() {
-    this['/about']()
-    document.querySelector('outlet').innerHTML = '<p>Auth Page</p>'
-  },
-  '/error'() {
-    app.innerHTML = '<p>404 Page</p>'
-  }
+function ifObject(obj) {
+  return Object.keys(obj).length === 0 && obj.constructor === Object
 }
 
-const historyRouters = new HistoryRouters(TRoute)
+function hasChildren(obj) {
+  return Object.keys(obj).children !== undefined
+}
 
-const btn = document.createElement('button')
-btn.innerText = 'go to /'
-btn.addEventListener('click', (e) => {
-  e.preventDefault()
-  console.log('/')
-  historyRouters.go('/')
+function BuildRouter(route, root) {
+  const troute = {}
+  Object.keys(route).forEach(key => {
+    troute[key] = () => {
+      root.innerHTML = route[key].component
+    }
+    if (route[key].children) {
+      route[key].children.forEach(child => {
+        troute[child.path] = () => {
+          root.innerHTML = child.component
+        }
+      })
+    }
+  })
+  return troute
+}
+
+// const TRoute = {
+//   '/'() {
+//     app.innerHTML = '<p>Home Page</p>'
+//   },
+//   '/about'() {
+//     app.innerHTML = '<p>About Page<outlet></outlet></p>'
+//   },
+//   '/about/auth'() {
+//     this['/about']()
+//     document.querySelector('outlet').innerHTML = '<p>Auth Page</p>'
+//   },
+//   '/error'() {
+//     app.innerHTML = '<p>404 Page</p>'
+//   }
+// }
+
+const historyRouters = new HistoryRouters(Route, app)
+
+Object.keys(BuildRouter(Route, app)).forEach(key => {
+  let btn = document.createElement('button')
+  btn.innerText = `go to ${key}`
+  btn.addEventListener('click', (e) => {
+    e.preventDefault()
+    console.log(key)
+    historyRouters.go(key)
+  })
+  document.body.appendChild(btn)
 })
-
-const btn1 = document.createElement('button')
-btn1.innerText = 'go to /about'
-btn1.addEventListener('click', (e) => {
-  e.preventDefault()
-  console.log('about')
-  historyRouters.go('/about')
-})
-
-const btn3 = document.createElement('button')
-btn3.innerText = 'go to /about/auth'
-btn3.addEventListener('click', (e) => {
-  e.preventDefault()
-  console.log('about/auth')
-  historyRouters.go('/about/auth')
-})
-
-const btn2 = document.createElement('button')
-btn2.innerText = 'go to /error'
-btn2.addEventListener('click', (e) => {
-  e.preventDefault()
-  console.log('error')
-  historyRouters.go('/error')
-})
-
-document.body.appendChild(btn)
-document.body.appendChild(btn1)
-document.body.appendChild(btn2)
-document.body.appendChild(btn3)

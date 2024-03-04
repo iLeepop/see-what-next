@@ -40,6 +40,8 @@ function loopNode(node) { // 递归遍历树 寄 不应该是以解析 dom 的�
   return _node
 }
 
+const test = document.getElementById('test')
+
 const root = document.getElementById('root')
 const tree = loopNode(root)
 console.log(tree)

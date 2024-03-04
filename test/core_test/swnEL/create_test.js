@@ -1,0 +1,1 @@
+const swn_app = document.createElement('swn-app')
