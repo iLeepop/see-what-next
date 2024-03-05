@@ -7,6 +7,7 @@ function PathEqual(key) {
   return path === key
 }
 
+// todo: 应该为递归方法 而不是只处理到第二层路由
 export function BuildRouter(route, root) {
   const troute = {}
   Object.keys(route).forEach(key => {

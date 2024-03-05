@@ -1,6 +1,7 @@
 import { v1 } from 'uuid'
 //
 // import { RegistryRoute } from './HistoryRoute.js'
+// 以下代码 屁用没有
 // 路由元素 麻烦 没写
 export class RouteElement extends HTMLElement {
   static cname = 'swn-element'

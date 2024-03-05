@@ -1,3 +1,4 @@
+// 这段代码 屁用没有
 function loopNode(node) { // 嵌套 思路有问题
   const children = node.children
   const _node = {}

@@ -41,7 +41,9 @@ class SWNSlider extends SWNElement {
     this.render()
   }
 
-  render() { // 不确定这么写对不对 避免数据修改过快导致短时间渲染多次
+  render() {
+    // 不确定这么写对不对 避免数据修改过快导致短时间渲染多次
+    // 0305: 保持 render 纯净还是另写一个防抖函数
     clearTimeout(this.renderTime)
     this.renderTime = setTimeout(() => {
       this.shadowRoot.innerHTML = `
@@ -71,6 +73,10 @@ class SWNSlider extends SWNElement {
   <div class="swn-slider out-line"></div>
   `
     }, 500)
+  }
+
+  randomPage() {
+    // todo
   }
 }
 

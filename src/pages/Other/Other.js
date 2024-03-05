@@ -172,12 +172,12 @@ class Other extends SWNElement {
           <div class="tag"><span>#</span>React</div>
           <div class="tag"><span>#</span>JavaScript</div>
           <div class="tag"><span>#</span>Docker</div>
-          <div class="tag"><span>#</span>CICD</div>
+          <div class="tag"><span>#</span>AI</div>
           <div class="tag"><span>#</span>Flutter</div>
           <div class="tag"><span>#</span>React</div>
           <div class="tag"><span>#</span>JavaScript</div>
           <div class="tag"><span>#</span>Docker</div>
-          <div class="tag"><span>#</span>CICD</div>
+          <div class="tag"><span>#</span>AI</div>
           <div class="tag"><span>#</span>Flutter</div>
         </div>
       </div>

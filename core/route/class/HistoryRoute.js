@@ -2,7 +2,7 @@ import { BuildRouter } from '../util/BuildRouter.js'
 import SWN from '../../mount/SWN.js'
 
 export class HistoryRouters {
-  // 不对 不应该传 root 应该只传 routes
+  // todo: 不对 不应该传 root 应该只传 routes
   constructor(routes, root) {
     this.routes = BuildRouter(routes, root)
     this._bind()
