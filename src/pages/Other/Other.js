@@ -8,7 +8,9 @@ class Other extends SWNElement {
   connectedCallback() {
     this.render()
   }
-  disconnectedCallback() { }
+  disconnectedCallback() {
+    console.log('Other disconnectedCallback')
+  }
   render() {
     clearTimeout(this.renderTime)
     this.renderTime = setTimeout(() => {

@@ -7,6 +7,21 @@ function PathEqual(key) {
   return path === key
 }
 
+function recursion(routes, root, droute) {
+  routes.forEach(i => {
+    droute[i.path] = () => {
+      // 路由方法 比较难判断 无法确定父子关系 因为项目设计原因 只让子路由去匹配了 card 所以 '/' 这种属于父级的路由比较 '/home' 之类的需要单独处理
+    }
+    if (i.children) recursion(i.children, root, droute)
+  })
+}
+
+export function nBuildRouter(routes, root) {
+  const droute = {}
+  recursion(routes, root, droute)
+  return droute
+}
+
 // todo: 应该为递归方法 而不是只处理到第二层路由
 export function BuildRouter(route, root) {
   const troute = {}
